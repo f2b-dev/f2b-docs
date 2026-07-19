@@ -1,21 +1,34 @@
 # f2b-docs
 
-灵境云 / F2B 组织仓库骨架。详见组织设计与 [todo](https://github.com/f2b-dev)。
+灵境云 / F2B-Navo **开发者文档站**（VitePress）。
 
-| 仓 | 角色 |
-|----|------|
-| f2b-web | 官网 + 控制台壳 + BFF + 产品插件 |
-| f2b-sdk-js | 官方 TypeScript SDK |
-| f2b-sdk-python | 官方 Python SDK |
-| f2b-mcp-gateway | MCP 网关 |
-| f2b-tunnel | 隧道代理 |
-| f2b-infra | 部署 / compose |
-| f2b-docs | 开发者文档 |
+## 本地
 
-**本仓（f2b-docs）**：待从迁移计划填充实现。当前仅占位，便于 org 可见与协作。
+```bash
+pnpm install
+pnpm dev      # http://127.0.0.1:5173
+pnpm build    # 输出 docs/.vitepress/dist
+pnpm preview
+```
 
-- 契约：https://github.com/f2b-dev/f2b-spec
-- 沙箱服务：https://github.com/f2b-dev/f2b-sandbox
-- 组织：https://github.com/f2b-dev
+## 内容结构
+
+```text
+docs/
+  index.md                 # 首页
+  guide/                   # 入门、仓库地图
+  architecture/            # 总览、控制/数据面、鉴权
+  api/                     # 沙箱 HTTP、错误码
+  sdk/                     # JS / Python
+```
+
+## 相关仓
+
+- 组织：https://github.com/f2b-dev  
+- 契约：https://github.com/f2b-dev/f2b-spec  
+- 沙箱：https://github.com/f2b-dev/f2b-sandbox  
+- 控制台：https://github.com/f2b-dev/f2b-web  
+
+对外文案遵循品牌规则：宣传灵境云自研沙箱能力，不在用户文档中堆砌上游实现商标。
 
 Apache-2.0
