@@ -18,7 +18,8 @@ GET /healthz
 | POST | `/v1/sandboxes` | 创建 body：`name` / `template` / `timeoutMs` / `allowInternetAccess` / `projectId` |
 | GET | `/v1/sandboxes/{id}` | 详情 |
 | DELETE | `/v1/sandboxes/{id}` | 销毁 |
-| POST | `/v1/sandboxes/{id}/commands` | body：`{ "cmd": "echo hi" }` |
+| POST | `/v1/sandboxes/{id}/commands` | body：`{ "cmd": "echo hi" }` 整包 JSON |
+| POST | `/v1/sandboxes/{id}/commands/stream` | 同上 body；响应 SSE：`stdout`/`stderr`/`result` |
 | GET | `/v1/sandboxes/{id}/files` | `?path=` 读；`?list=1&path=` 列目录 |
 | POST | `/v1/sandboxes/{id}/files` | body：`path` / `content` / `encoding` |
 
