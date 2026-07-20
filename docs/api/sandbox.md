@@ -32,7 +32,15 @@ GET /healthz
 
 ## 经 BFF（浏览器同源）
 
-f2b-web 将 `/api/sandboxes*` 代理到 sandbox `/v1/sandboxes*`。控制台 E2E：`pnpm e2e:bff`。
+f2b-web 将 `/api/sandboxes*` 代理到 sandbox `/v1/sandboxes*`。
+
+| 浏览器路径 | 上游 |
+|------------|------|
+| `POST /api/sandboxes` | `POST /v1/sandboxes` |
+| `POST /api/sandboxes/{id}/commands` | 整包命令 |
+| `POST /api/sandboxes/{id}/commands/stream` | SSE 透传（`proxySseToSandbox`，不缓冲 body） |
+
+控制台终端默认走 stream。E2E：`pnpm e2e:bff`。
 
 ## 示例
 
