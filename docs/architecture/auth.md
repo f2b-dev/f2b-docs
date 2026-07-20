@@ -31,3 +31,7 @@ F2bClient(base_url="https://api.example", api_key=os.environ["F2B_API_KEY"])
 ```
 
 开发期 `auth=off` 时可省略 `apiKey`。
+
+## 与 BFF 的关系
+
+完整路由与 admin 注入见 [BFF 路由表](./bff)。数据面密钥边界见 [控制面与数据面](./planes)。
