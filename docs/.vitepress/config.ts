@@ -45,6 +45,7 @@ export default defineConfig({
           text: "HTTP API",
           items: [
             { text: "沙箱 API", link: "/api/sandbox" },
+            { text: "隧道 API", link: "/api/tunnel" },
             { text: "错误码", link: "/api/errors" },
           ],
         },

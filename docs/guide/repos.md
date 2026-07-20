@@ -10,7 +10,7 @@
 | [f2b-sdk-js](https://github.com/f2b-dev/f2b-sdk-js) | 官方 TypeScript SDK |
 | [f2b-sdk-python](https://github.com/f2b-dev/f2b-sdk-python) | 官方 Python SDK |
 | [f2b-mcp-gateway](https://github.com/f2b-dev/f2b-mcp-gateway) | MCP 网关（stdio + 沙箱 tools） |
-| [f2b-tunnel](https://github.com/f2b-dev/f2b-tunnel) | 隧道代理（骨架） |
+| [f2b-tunnel](https://github.com/f2b-dev/f2b-tunnel) | 隧道代理（预览 URL + 反向代理） |
 | [f2b-infra](https://github.com/f2b-dev/f2b-infra) | compose / 本地全栈脚本 |
 | [f2b-docs](https://github.com/f2b-dev/f2b-docs) | 本站 |
 
