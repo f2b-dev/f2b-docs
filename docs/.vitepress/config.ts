@@ -26,6 +26,7 @@ export default defineConfig({
             { text: "产品介绍", link: "/guide/intro" },
             { text: "本地快速开始", link: "/guide/quickstart" },
             { text: "仓库地图", link: "/guide/repos" },
+            { text: "MCP 网关", link: "/guide/mcp" },
           ],
         },
       ],
