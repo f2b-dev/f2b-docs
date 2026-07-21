@@ -58,3 +58,17 @@ curl -s -X POST http://127.0.0.1:13287/v1/sandboxes/$ID/commands \
 # 销毁
 curl -s -X DELETE http://127.0.0.1:13287/v1/sandboxes/$ID
 ```
+
+## 用量
+
+| 方法 | 路径 | 说明 |
+|------|------|------|
+| GET | `/v1/usage?days=7` | 近 N 日（1–90）UTC 日聚合：沙箱存活时长 + 命令次数 |
+
+响应字段：`usage.totalSandboxHours`、`usage.totalCommands`、`usage.byDay[]`（`day` / `sandboxHours` / `commands` / `durationMs`）。
+
+- 存活时长：沙箱销毁时写入 `sandbox_usage`（`kind=lifetime`）
+- 命令次数：`POST .../commands` 与 `.../commands/stream` 成功记账（`kind=command`，`commands=1`）
+
+控制台：`/console/usage`（经 BFF `GET /api/usage` 代理，不暴露数据面密钥）。
+
