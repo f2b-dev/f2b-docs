@@ -65,6 +65,12 @@ curl -s -X POST http://127.0.0.1:13287/v1/sandboxes/$ID/commands \
 curl -s -X DELETE http://127.0.0.1:13287/v1/sandboxes/$ID
 ```
 
+## 模板
+
+| 方法 | 路径 | 说明 |
+|------|------|------|
+| GET | `/v1/templates` | 预置模板目录（`id` 即创建时的 `template`） |
+
 ## 用量
 
 | 方法 | 路径 | 说明 |
