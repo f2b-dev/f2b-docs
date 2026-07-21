@@ -24,11 +24,27 @@
 | DELETE | `/v1/tunnels/{id}` | 关闭 |
 | * | `/t/{id}/…` | 公开预览代理 |
 
+## 控制台 BFF
+
+浏览器只走同源：
+
+| 方法 | 路径 | 上游 |
+|------|------|------|
+| GET/POST | `/api/tunnels` | f2b-tunnel `/v1/tunnels` |
+| GET/DELETE | `/api/tunnels/{id}` | 同上 |
+
+`f2b-web` 服务端 env：`F2B_TUNNEL_URL`（默认 `http://127.0.0.1:8790`）。预览 `publicUrl` 仍指向 tunnel 自身的 `/t/{id}/`（`F2B_TUNNEL_PUBLIC_BASE`）。
+
 ## 示例
 
 ```bash
 # 创建（假设本机 3000 有服务）
 curl -s -X POST http://127.0.0.1:8790/v1/tunnels \
+  -H 'content-type: application/json' \
+  -d '{"sandboxId":"sbx_demo","port":3000,"targetUrl":"http://127.0.0.1:3000"}'
+
+# 经 BFF
+curl -s -X POST http://127.0.0.1:13200/api/tunnels \
   -H 'content-type: application/json' \
   -d '{"sandboxId":"sbx_demo","port":3000,"targetUrl":"http://127.0.0.1:3000"}'
 
