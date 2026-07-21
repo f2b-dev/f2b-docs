@@ -18,6 +18,7 @@
 |------|------|
 | `INTERNAL` | 未分类服务端错误 |
 | `BACKEND_UNAVAILABLE` | 上游或网络不可达 |
+| `CAPACITY_EXCEEDED` | 单机并发 running 达 `F2B_MAX_CONCURRENT_SANDBOXES`（HTTP 429） |
 | `NOT_FOUND` | 资源不存在 |
 | `UNAUTHORIZED` | 缺少或无效凭证 |
 | `VALIDATION` | 请求体 / 参数非法 |
