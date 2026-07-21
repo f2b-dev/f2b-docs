@@ -18,6 +18,12 @@ GET /healthz
 | POST | `/v1/sandboxes` | 创建 body：`name` / `template` / `timeoutMs` / `allowInternetAccess` / `projectId` |
 | GET | `/v1/sandboxes/{id}` | 详情 |
 | DELETE | `/v1/sandboxes/{id}` | 销毁 |
+
+### 超时回收
+
+- 创建时若设置 `timeoutMs`（1 ms–24 h），从 `startedAt`（无则 `createdAt`）起算到期。
+- 进程内 reaper 默认每 **2 s** 扫表（`F2B_TIMEOUT_REAPER_MS`，`≤0` 关闭）；到期自动 `kill`，`error` 记为 `timeout exceeded`，并写入 lifetime 用量。
+- 启动时立即扫一次，清理重启前遗留的超时实例。
 | POST | `/v1/sandboxes/{id}/commands` | body：`{ "cmd": "echo hi" }` 整包 JSON |
 | POST | `/v1/sandboxes/{id}/commands/stream` | 同上 body；响应 SSE：`stdout`/`stderr`/`result` |
 | GET | `/v1/sandboxes/{id}/files` | `?path=` 读；`?list=1&path=` 列目录 |
