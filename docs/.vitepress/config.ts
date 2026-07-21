@@ -40,6 +40,7 @@ export default defineConfig({
             { text: "BFF 路由表", link: "/architecture/bff" },
             { text: "控制台插件", link: "/architecture/plugins" },
             { text: "本地 Compose", link: "/architecture/compose" },
+            { text: "单机容量与模板", link: "/architecture/capacity" },
             { text: "版本与发版", link: "/architecture/versioning" },
           ],
         },

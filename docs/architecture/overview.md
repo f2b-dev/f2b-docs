@@ -10,7 +10,7 @@
 浏览器
   └─ f2b-web（页面 + BFF：会话 / 聚合 / 代理）
         └─ f2b-sandbox（/v1）
-              └─ Fake | 生产 microVM 集群 adapter
+              └─ Fake | 单节点 microVM（all-in-one）| 后续多节点
 
 API Key 客户端
   └─ f2b-sdk-js / f2b-sdk-python  →  f2b-sandbox 公网 API（或统一网关）
@@ -48,4 +48,5 @@ API Key 客户端
 - [BFF 路由表](./bff)
 - [控制台插件](./plugins)
 - [本地 Compose](./compose)
+- [单机容量与模板规格](./capacity)
 - [版本与发版](./versioning)

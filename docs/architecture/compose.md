@@ -53,7 +53,7 @@ docker compose up --build
 |------|------|----------|
 | f2b-mcp-gateway | stdio MCP，非 HTTP 常驻 | 宿主机 `pnpm` + `F2B_SANDBOX_URL` |
 | f2b-tunnel | V1 可选；后续可用 compose profile | 独立 `pnpm dev` |
-| 真 microVM | Phase C | 配置 sandbox 的 `F2B_CUBE_*`（仅服务端） |
+| 真 microVM（单节点） | 需 Linux+KVM 的主机 | 配置 sandbox 的 `F2B_CUBE_*`（仅服务端）；进程/端口见 [f2b-infra all-in-one](https://github.com/f2b-dev/f2b-infra/blob/main/docs/all-in-one.md)；容量见 [单机容量](./capacity) |
 
 ## 冒烟
 
