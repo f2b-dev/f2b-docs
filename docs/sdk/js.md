@@ -18,8 +18,13 @@ const client = new F2bClient({
 
 const sbx = await Sandbox.create(client, { template: "base" });
 const { stdout } = await sbx.run("echo hello");
+const streamed = await sbx.runStream("echo stream", {
+  onEvent: (ev) => console.log(ev.type),
+});
 await sbx.write("/home/user/a.txt", "ok");
 console.log(await sbx.read("/home/user/a.txt"));
+await sbx.pause();
+await sbx.resume();
 await sbx.kill();
 ```
 
@@ -27,4 +32,7 @@ await sbx.kill();
 |------|------|
 | `baseUrl` | 服务根，无尾斜杠 |
 | `pathPrefix` | 默认 `/v1`；旧 BFF 可 `/api` |
+| `tunnelBaseUrl` / `tunnelPathPrefix` | 隧道服务；BFF 用 `/api` |
 | `apiKey` | Bearer 用户密钥 |
+
+**导出**：`Sandbox.run` / `runStream`（SSE）/ `pause` / `resume`；`getUsage` / `listTemplates` / 隧道 CRUD。
