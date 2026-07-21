@@ -18,6 +18,8 @@ GET /healthz
 | POST | `/v1/sandboxes` | 创建 body：`name` / `template` / `timeoutMs` / `allowInternetAccess` / `projectId` |
 | GET | `/v1/sandboxes/{id}` | 详情 |
 | DELETE | `/v1/sandboxes/{id}` | 销毁 |
+| POST | `/v1/sandboxes/{id}/pause` | 暂停（fake 支持；Cube 视集群） |
+| POST | `/v1/sandboxes/{id}/resume` | 恢复 |
 
 ### 超时回收
 

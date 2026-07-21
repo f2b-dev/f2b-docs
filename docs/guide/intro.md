@@ -4,7 +4,7 @@
 
 | 能力 | 说明 |
 |------|------|
-| 生命周期 | 创建 / 列表 / 详情 / 销毁（Pause/Resume 路线图） |
+| 生命周期 | 创建 / 列表 / 详情 / 销毁（Pause/Resume（fake 全量；Cube 视集群）） |
 | 命令 | Shell 执行，返回 stdout / stderr / exitCode |
 | 文件 | 读、写、列目录 |
 | 模板 | base、code-interpreter 等预置 |
