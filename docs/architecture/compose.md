@@ -27,8 +27,8 @@ docker compose up --build
 
 ```text
 ┌─────────────┐     F2B_SANDBOX_URL      ┌──────────────────┐
-│  web :3000  │ ───────────────────────► │  sandbox :8787   │
-│  (BFF+UI)   │   http://sandbox:8787    │  Fake / adapter  │
+│  web :13200  │ ───────────────────────► │  sandbox :13287   │
+│  (BFF+UI)   │   http://sandbox:13287    │  Fake / adapter  │
 └─────────────┘                          └────────┬─────────┘
                                                   │ volume
                                            sandbox-data (SQLite)
@@ -36,8 +36,8 @@ docker compose up --build
 
 | 服务 | 端口 | 关键配置 |
 |------|------|----------|
-| `sandbox` | 8787 | `F2B_SANDBOX_BACKEND=fake`，`F2B_AUTH_MODE=off`，健康检查 `/healthz` |
-| `web` | 3000 | `F2B_SANDBOX_URL=http://sandbox:8787`，依赖 sandbox healthy |
+| `sandbox` | 13287 | `F2B_SANDBOX_BACKEND=fake`，`F2B_AUTH_MODE=off`，健康检查 `/healthz` |
+| `web` | 13200 | `F2B_SANDBOX_URL=http://sandbox:13287`，依赖 sandbox healthy |
 
 ## 宿主机双进程（不构建镜像）
 
@@ -61,5 +61,5 @@ docker compose up --build
 ./scripts/smoke.sh   # compose up 之后
 ```
 
-控制台：`http://localhost:3000`  
-沙箱：`http://localhost:8787/healthz`  
+控制台：`http://localhost:13200`  
+沙箱：`http://localhost:13287/healthz`  

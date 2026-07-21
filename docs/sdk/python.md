@@ -13,7 +13,7 @@ python3 scripts/smoke.py      # → PY_SDK_SMOKE_OK
 ```python
 from f2b import F2bClient, Sandbox
 
-client = F2bClient(base_url="http://127.0.0.1:8787")
+client = F2bClient(base_url="http://127.0.0.1:13287")
 sbx = Sandbox.create(client, template="base")
 print(sbx.run("echo hello")["stdout"])
 sbx.write("/home/user/a.txt", "ok")

@@ -2,7 +2,7 @@
 
 权威契约：[f2b-spec/openapi/sandbox-v1.yaml](https://github.com/f2b-dev/f2b-spec/blob/main/openapi/sandbox-v1.yaml)。
 
-默认本地：`http://127.0.0.1:8787`，路径前缀 **`/v1`**。
+默认本地：`http://127.0.0.1:13287`，路径前缀 **`/v1`**。
 
 ## 健康检查
 
@@ -46,15 +46,15 @@ f2b-web 将 `/api/sandboxes*` 代理到 sandbox `/v1/sandboxes*`。
 
 ```bash
 # 创建
-curl -s -X POST http://127.0.0.1:8787/v1/sandboxes \
+curl -s -X POST http://127.0.0.1:13287/v1/sandboxes \
   -H 'content-type: application/json' \
   -d '{"name":"demo","template":"base"}'
 
 # 命令（替换 ID）
-curl -s -X POST http://127.0.0.1:8787/v1/sandboxes/$ID/commands \
+curl -s -X POST http://127.0.0.1:13287/v1/sandboxes/$ID/commands \
   -H 'content-type: application/json' \
   -d '{"cmd":"echo hello"}'
 
 # 销毁
-curl -s -X DELETE http://127.0.0.1:8787/v1/sandboxes/$ID
+curl -s -X DELETE http://127.0.0.1:13287/v1/sandboxes/$ID
 ```

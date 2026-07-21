@@ -28,7 +28,7 @@ MCP Client (stdio)
 ## 本地
 
 ```bash
-# 先起 f2b-sandbox :8787
+# 先起 f2b-sandbox :13287
 cd f2b-mcp-gateway
 pnpm install
 pnpm smoke   # → MCP_SMOKE_OK

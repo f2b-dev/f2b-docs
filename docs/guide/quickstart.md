@@ -19,14 +19,14 @@ done
 
 ```bash
 cd f2b-infra
-./scripts/dev-host.sh   # 起 sandbox :8787 + web :3000
+./scripts/dev-host.sh   # 起 sandbox :13287 + web :13200
 ./scripts/smoke.sh      # INFRA_SMOKE_OK
 ```
 
 打开：
 
-- 官网 / 控制台：http://127.0.0.1:3000  
-- 沙箱 API：http://127.0.0.1:8787/healthz  
+- 官网 / 控制台：http://127.0.0.1:13200  
+- 沙箱 API：http://127.0.0.1:13287/healthz  
 
 控制台路径：列表 → 创建沙箱 → 终端运行命令 → 销毁。
 
@@ -56,7 +56,7 @@ python3 scripts/smoke.py
 ### curl
 
 ```bash
-curl -s -X POST http://127.0.0.1:8787/v1/sandboxes \
+curl -s -X POST http://127.0.0.1:13287/v1/sandboxes \
   -H 'content-type: application/json' \
   -d '{"name":"demo","template":"base"}'
 ```

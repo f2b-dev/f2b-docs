@@ -8,7 +8,7 @@
 
 | 变量 | 说明 |
 |------|------|
-| `F2B_SANDBOX_URL` | 沙箱上游，默认 `http://127.0.0.1:8787` |
+| `F2B_SANDBOX_URL` | 沙箱上游，默认 `http://127.0.0.1:13287` |
 | `F2B_SANDBOX_ADMIN_TOKEN` / `F2B_ADMIN_TOKEN` | 仅用于 `/api/keys*` → 上游管理接口 |
 
 ## 路由表（V1）

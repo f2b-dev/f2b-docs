@@ -12,7 +12,7 @@ cd f2b-sdk-js && pnpm install && pnpm smoke
 import { F2bClient, Sandbox } from "@f2b/sdk";
 
 const client = new F2bClient({
-  baseUrl: "http://127.0.0.1:8787",
+  baseUrl: "http://127.0.0.1:13287",
   // apiKey: process.env.F2B_API_KEY,
 });
 
