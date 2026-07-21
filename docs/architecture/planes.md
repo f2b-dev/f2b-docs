@@ -20,14 +20,32 @@
 - 网络策略（如是否允许公网）  
 - 后端实现：开发期 **Fake**；生产接 microVM 集群 adapter  
 
+### 生产路径分层（f2b-sandbox）
+
+生产数据面在 `f2b-sandbox` 内拆成两层（与常见沙箱 SDK 一致）：
+
+| 层 | 职责 | 主要路径 |
+|----|------|----------|
+| **集群控制 API** | 生命周期 | `POST/GET/DELETE /sandboxes` |
+| **guest 内 envd** | 命令 / 文件 | Connect `process.Process/Start`；`GET/POST /files`；`ListDir` |
+
+要点：
+
+- 创建请求字段：`templateID`（必填）、`timeout`（**秒**）、`allow_internet_access`（snake_case）、`metadata` 等。  
+- 创建响应含 `sandboxID`、`envdAccessToken`、`domain` 等；**token 仅服务端进程缓存**，不经 Control API / BFF 下发浏览器。  
+- 命令与文件**不**走集群控制 API 的 `/commands`、`/files` 假路径，而走 envd。  
+- 无 KVM 时：`F2B_SANDBOX_BACKEND=fake`，或 `pnpm mock:cube` + `pnpm smoke:cube` 验协议。
+
+环境变量（仅服务端）：`F2B_CUBE_API_URL` / `F2B_CUBE_API_TOKEN`、可选 `F2B_CUBE_ENVD_BASE_URL`、`F2B_CUBE_SANDBOX_DOMAIN`、`F2B_CUBE_ENVD_PORT`。强制 Fake：`F2B_SANDBOX_BACKEND=fake`。
+
 ## 边界
 
 ```text
-浏览器 ──► f2b-web BFF ──► f2b-sandbox ──► Fake / 集群
+浏览器 ──► f2b-web BFF ──► f2b-sandbox ──► Fake | 控制 API + envd
    │              │                │
-   │              │                └─ 数据面凭证（仅服务端 env）
+   │              │                └─ 数据面凭证 / envd token（仅服务端）
    │              └─ F2B_SANDBOX_URL、可选 Admin Token（服务端）
-   └─ 永不出现 CUBE_* / 集群管理 Token
+   └─ 永不出现 CUBE_* / 集群管理 Token / envdAccessToken
 ```
 
 | 允许 | 禁止 |
@@ -40,3 +58,4 @@
 
 - `F2B_SANDBOX_BACKEND=fake`  
 - 控制台顶栏可见 `fake · BFF → sandbox` 一类诚实状态  
+- 契约：`f2b-sandbox` 的 `pnpm ci:contract` 含 fake 冒烟 + mock 控制 API/envd 的 `smoke:cube`  
