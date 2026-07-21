@@ -13,7 +13,11 @@
 | [f2b-tunnel](https://github.com/f2b-dev/f2b-tunnel) | 隧道代理（预览 URL + 反向代理） |
 | [f2b-infra](https://github.com/f2b-dev/f2b-infra) | compose / 本地全栈脚本 |
 | [f2b-docs](https://github.com/f2b-dev/f2b-docs) | 本站 |
+| [f2b-meta](https://github.com/f2b-dev/f2b-meta) | 贡献指南 · 安全披露 · 品牌 · 组织地图 |
 
 后置：`f2b-platform`（租户/账单）、更多语言 SDK、真 microVM 集群接入。
 
 包名：`@f2b/*`。本地 path 示例：`/Users/<you>/workspace/revocloud/f2b-*`。
+
+组织主页：https://github.com/f2b-dev（profile 仓 [`.github`](https://github.com/f2b-dev/.github)）。  
+参与贡献 / 漏洞披露：见 [f2b-meta](https://github.com/f2b-dev/f2b-meta)。
