@@ -1,6 +1,6 @@
 # 沙箱 HTTP API
 
-权威契约：[f2b-spec/openapi/sandbox-v1.yaml](https://github.com/f2b-dev/f2b-spec/blob/main/openapi/sandbox-v1.yaml)。  
+权威契约：[f2b-spec/openapi/sandbox-v1.yaml](https://github.com/f2b-dev/f2b-spec/blob/main/openapi/sandbox-v1.yaml)（入口页 [OpenAPI](./openapi)）。  
 错误码与 HTTP 映射：[错误码](./errors.md)（与 `errors/codes.json` / SDK `ErrorCode` 对齐）。
 
 默认本地：`http://127.0.0.1:13287`，路径前缀 **`/v1`**。

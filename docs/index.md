@@ -17,11 +17,11 @@ hero:
       link: https://github.com/f2b-dev
 features:
   - title: 60 秒跑通
-    details: 本地 fake 数据面 + 控制台 BFF 或 SDK，创建 → 命令 → 文件 → 销毁。
+    details: 端口 13200 / 13287；host 脚本或 all-in-one，create → 命令 → 销毁。
   - title: 控制面 ≠ 数据面
     details: 浏览器只打同源 BFF；管理密钥与集群凭证仅服务端持有。
-  - title: 多语言 SDK
-    details: TypeScript 与 Python 官方客户端，契约对齐 OpenAPI /v1。
+  - title: Cookbook + OpenAPI
+    details: 保活 / 命令选项 / base64 示例；契约直链 f2b-spec YAML。
   - title: 开源矩阵
     details: spec · web · sandbox · sdk · infra · docs 分仓协作，Apache-2.0。
 ---

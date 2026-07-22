@@ -25,4 +25,4 @@
 2. 无生产集群时用 **fake** 后端，控制台状态需诚实（例如 `fake · BFF → sandbox`）。
 3. **1.0 前** 官方包不强制走 npm / PyPI registry，可用 `file:` / git / editable 安装。
 
-下一篇：[本地快速开始](./quickstart)。
+下一篇：[本地快速开始](./quickstart) · [Cookbook](./cookbook)。

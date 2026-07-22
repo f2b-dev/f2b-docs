@@ -25,6 +25,7 @@ export default defineConfig({
           items: [
             { text: "产品介绍", link: "/guide/intro" },
             { text: "本地快速开始", link: "/guide/quickstart" },
+            { text: "Cookbook", link: "/guide/cookbook" },
             { text: "仓库地图", link: "/guide/repos" },
             { text: "MCP 网关", link: "/guide/mcp" },
           ],
@@ -52,6 +53,7 @@ export default defineConfig({
             { text: "沙箱 API", link: "/api/sandbox" },
             { text: "隧道 API", link: "/api/tunnel" },
             { text: "错误码", link: "/api/errors" },
+            { text: "OpenAPI 契约", link: "/api/openapi" },
           ],
         },
       ],
