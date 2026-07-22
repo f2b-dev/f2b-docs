@@ -25,6 +25,7 @@ GET /healthz
 | POST | `/v1/sandboxes/{id}/commands/stream` | 同上 body；响应 SSE：`stdout`/`stderr`/`result` |
 | GET | `/v1/sandboxes/{id}/files` | `?path=` 读；`?list=1&path=` 列目录 |
 | POST | `/v1/sandboxes/{id}/files` | body：`path` / `content` / `encoding` |
+| DELETE | `/v1/sandboxes/{id}/files` | `?path=` 删除；目录加 `recursive=1` |
 
 ### metadata
 

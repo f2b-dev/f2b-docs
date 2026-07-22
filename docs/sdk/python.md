@@ -47,6 +47,6 @@ client.close_tunnel(tun["id"])
 | `api_key` | 可选 Bearer |
 | `timeout_sec` | HTTP 超时，默认 60 |
 
-**导出**：`Sandbox`（`create` / `run` / `run_stream` / `write` / `read` / `list_files` / `pause` / `resume` / `update` / `kill`）、`update_sandbox` / `get_usage` / `list_templates` / 隧道 CRUD。
+**导出**：`Sandbox`（`create` / `run` / `run_stream` / `write` / `read` / `list_files` / `delete_file` / `pause` / `resume` / `update` / `kill`）、`update_sandbox` / `get_usage` / `list_templates` / 隧道 CRUD。
 
 **1.0 前不发布 PyPI。**

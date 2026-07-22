@@ -35,4 +35,4 @@ await sbx.kill();
 | `tunnelBaseUrl` / `tunnelPathPrefix` | 隧道服务；BFF 用 `/api` |
 | `apiKey` | Bearer 用户密钥 |
 
-**导出**：`Sandbox.run` / `runStream`（SSE）/ `pause` / `resume` / `update`（PATCH timeout/metadata）；`updateSandbox` / `getUsage` / `listTemplates` / 隧道 CRUD。
+**导出**：`Sandbox.run` / `runStream`（SSE）/ `write` / `read` / `listFiles` / `deleteFile` / `pause` / `resume` / `update`（PATCH timeout/metadata）；`updateSandbox` / `getUsage` / `listTemplates` / 隧道 CRUD。
