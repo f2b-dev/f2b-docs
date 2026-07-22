@@ -71,3 +71,9 @@ f2b-spec
   → f2b-mcp-gateway / f2b-tunnel（若触及契约）
   → f2b-docs / f2b-infra 说明
 ```
+
+## CHANGELOG 与 1.0 清单
+
+- 各产品仓根目录 `CHANGELOG.md`（Keep a Changelog；预 1.0 用 `## [Unreleased]`）。
+- 组织级 **1.0 门槛、发布顺序、安全演练**：[f2b-meta RELEASE.md](https://github.com/f2b-dev/f2b-meta/blob/main/RELEASE.md)。
+- **勾选完 RELEASE 清单前**不得 npm / PyPI 正式发布。
