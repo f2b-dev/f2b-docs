@@ -23,6 +23,8 @@ GET /healthz
 | POST | `/v1/sandboxes/{id}/resume` | 恢复 |
 | POST | `/v1/sandboxes/{id}/commands` | body：`cmd` 必填；可选 `cwd` / `env` / `timeoutMs`（命令级，≤30 min） |
 | POST | `/v1/sandboxes/{id}/commands/stream` | 同上 body；响应 SSE：`stdout`/`stderr`/`result` |
+
+> **stdin**：契约与控制台 **1.0 前不暴露**；即使底层 envd 有字段，产品 API / SDK / MCP 也不接。交互式管道后置。
 | GET | `/v1/sandboxes/{id}/files` | `?path=` 读（`encoding=utf8|base64`）；`?list=1&path=` 列目录 |
 | POST | `/v1/sandboxes/{id}/files` | body：`path` / `content` / `encoding`（`utf8` 默认 / `base64` 二进制） |
 | DELETE | `/v1/sandboxes/{id}/files` | `?path=` 删除；目录加 `recursive=1` |
