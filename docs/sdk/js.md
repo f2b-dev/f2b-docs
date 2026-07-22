@@ -23,6 +23,8 @@ const streamed = await sbx.runStream("echo stream", {
 });
 await sbx.write("/home/user/a.txt", "ok");
 console.log(await sbx.read("/home/user/a.txt"));
+await sbx.write("/home/user/a.bin", new Uint8Array([1, 2, 3]));
+const bytes = await sbx.readBytes("/home/user/a.bin");
 await sbx.pause();
 await sbx.resume();
 await sbx.kill();
@@ -35,4 +37,4 @@ await sbx.kill();
 | `tunnelBaseUrl` / `tunnelPathPrefix` | 隧道服务；BFF 用 `/api` |
 | `apiKey` | Bearer 用户密钥 |
 
-**导出**：`Sandbox.run` / `runStream`（SSE）/ `write` / `read` / `listFiles` / `deleteFile` / `mkdir` / `rename` / `pause` / `resume` / `update`（PATCH timeout/metadata）；`updateSandbox` / `getUsage` / `listTemplates` / 隧道 CRUD。
+**导出**：`Sandbox.run` / `runStream`（SSE）/ `write`（utf8 或 `Uint8Array`/base64）/ `read` / `readBytes` / `listFiles` / `deleteFile` / `mkdir` / `rename` / `pause` / `resume` / `update`（PATCH timeout/metadata）；`updateSandbox` / `getUsage` / `listTemplates` / 隧道 CRUD。

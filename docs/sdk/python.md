@@ -19,6 +19,8 @@ sbx = Sandbox.create(client, template="base")
 print(sbx.run("echo hello")["stdout"])
 sbx.write("/home/user/a.txt", "ok")
 print(sbx.read("/home/user/a.txt"))
+sbx.write("/home/user/a.bin", b"\x00\x01\xfe")
+print(sbx.read_bytes("/home/user/a.bin"))
 sbx.pause()
 sbx.resume()
 print(client.list_templates())
@@ -47,6 +49,6 @@ client.close_tunnel(tun["id"])
 | `api_key` | 可选 Bearer |
 | `timeout_sec` | HTTP 超时，默认 60 |
 
-**导出**：`Sandbox`（`create` / `run` / `run_stream` / `write` / `read` / `list_files` / `delete_file` / `mkdir` / `rename` / `pause` / `resume` / `update` / `kill`）、`update_sandbox` / `get_usage` / `list_templates` / 隧道 CRUD。
+**导出**：`Sandbox`（`create` / `run` / `run_stream` / `write`（str 或 bytes）/ `read` / `read_bytes` / `list_files` / `delete_file` / `mkdir` / `rename` / `pause` / `resume` / `update` / `kill`）、`update_sandbox` / `get_usage` / `list_templates` / 隧道 CRUD。
 
 **1.0 前不发布 PyPI。**
