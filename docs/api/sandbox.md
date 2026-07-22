@@ -21,7 +21,7 @@ GET /healthz
 | DELETE | `/v1/sandboxes/{id}` | 销毁 |
 | POST | `/v1/sandboxes/{id}/pause` | 暂停（fake 支持；Cube 视集群） |
 | POST | `/v1/sandboxes/{id}/resume` | 恢复 |
-| POST | `/v1/sandboxes/{id}/commands` | body：`{ "cmd": "echo hi" }` 整包 JSON |
+| POST | `/v1/sandboxes/{id}/commands` | body：`cmd` 必填；可选 `cwd` / `env` / `timeoutMs`（命令级，≤30 min） |
 | POST | `/v1/sandboxes/{id}/commands/stream` | 同上 body；响应 SSE：`stdout`/`stderr`/`result` |
 | GET | `/v1/sandboxes/{id}/files` | `?path=` 读；`?list=1&path=` 列目录 |
 | POST | `/v1/sandboxes/{id}/files` | body：`path` / `content` / `encoding` |
