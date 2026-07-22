@@ -26,6 +26,8 @@ GET /healthz
 | GET | `/v1/sandboxes/{id}/files` | `?path=` 读；`?list=1&path=` 列目录 |
 | POST | `/v1/sandboxes/{id}/files` | body：`path` / `content` / `encoding` |
 | DELETE | `/v1/sandboxes/{id}/files` | `?path=` 删除；目录加 `recursive=1` |
+| POST | `/v1/sandboxes/{id}/files/mkdir` | body：`path` / `recursive`（默认 true） |
+| POST | `/v1/sandboxes/{id}/files/rename` | body：`from` / `to` 重命名或移动 |
 
 ### metadata
 
