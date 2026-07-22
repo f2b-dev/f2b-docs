@@ -14,7 +14,7 @@ GET /healthz
 
 | 方法 | 路径 | 说明 |
 |------|------|------|
-| GET | `/v1/sandboxes` | 列表（可选 `?projectId=`） |
+| GET | `/v1/sandboxes` | 列表（可选 `?projectId=` / `?status=` 逗号多状态） |
 | POST | `/v1/sandboxes` | 创建 body：`name` / `template` / `timeoutMs` / `allowInternetAccess` / `metadata` / `projectId` |
 | GET | `/v1/sandboxes/{id}` | 详情（含 `metadata`） |
 | PATCH | `/v1/sandboxes/{id}` | 延期 `timeoutMs`（`null` 取消）与/或浅合并 `metadata`；仅活动沙箱 |
