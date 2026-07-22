@@ -21,4 +21,17 @@ jobs:
           node-version: "22"
       - run: corepack enable && corepack prepare pnpm@9.15.0 --activate
       - run: pnpm install --frozen-lockfile
+      - name: 端口守卫（文档默认服务口）
+        run: |
+          set -euo pipefail
+          # 仅扫 markdown 源；禁止把 8787 / web:3000 写成 f2b 服务基址
+          # 隧道 targetUrl 里的应用端口 3000 允许（grep 排除 targetUrl 行）
+          hits=$(grep -RInE 'http://127\.0\.0\.1:8787|http://localhost:8787|http://127\.0\.0\.1:3000|http://localhost:3000' \
+            --include='*.md' docs 2>/dev/null | grep -v 'targetUrl' || true)
+          if [[ -n "$hits" ]]; then
+            echo "$hits"
+            echo "文档含旧服务基址 3000/8787（非 targetUrl）" >&2
+            exit 1
+          fi
+          echo "port guards ok"
       - run: pnpm build
