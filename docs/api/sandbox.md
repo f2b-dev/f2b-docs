@@ -34,9 +34,12 @@ GET /healthz
 - 创建时可传 `metadata: { "key": "value" }`（string→string），控制面持久化，不进 guest。
 - `PATCH` 对 `metadata` **浅合并**（同 key 覆盖）；终端态返回 `SANDBOX_ALREADY_TERMINAL`。
 
-### 超时回收
+### 超时回收（滑动空闲）
 
-- 创建或 `PATCH` 设置 `timeoutMs`（1 ms–24 h；`null` 取消），从 `startedAt`（无则 `createdAt`）起算到期。
+- 创建或 `PATCH` 设置 `timeoutMs`（1 ms–24 h；`null` 取消）为**空闲窗口**。
+- 到期点 = `lastActiveAt`（缺省回落 `startedAt` / `createdAt`）+ `timeoutMs`。
+- 命令（含 stream）、读写/列目录/删除/mkdir/rename 成功后会刷新 `lastActiveAt`（活动保活）。
+- `PATCH` 设置非 null `timeoutMs` 时同步刷新 `lastActiveAt`（从现在起重新计时）。
 - 进程内 reaper 默认每 **2 s** 扫表（`F2B_TIMEOUT_REAPER_MS`，`≤0` 关闭）；到期自动 `kill`，`error` 记为 `timeout exceeded`，并写入 lifetime 用量。
 - 启动时立即扫一次，清理重启前遗留的超时实例。
 
