@@ -47,7 +47,7 @@ OpenAPI 文件名可带 major 暗示（如 `sandbox-v1.yaml`）；与 npm 包 se
 | 推送 | **仅** `push` 到 `main`；PR 只 build 不 push |
 | 默认镜像 env | `F2B_SANDBOX_BACKEND=fake`、`PORT=13287`、`DATABASE_URL=file:/data/…` |
 | 拉取示例 | `docker pull ghcr.io/f2b-dev/sandbox:latest` 或 `…/sandbox:<sha>` |
-| SBOM | **1.0 前可选**；1.0 闸门打开后建议 GHA 附加 `anchore/sbom-action` 或 buildx attestations，产物附 Release / GHCR |
+| SBOM | **预 1.0**：`main` image job 已挂 `anchore/sbom-action`（Syft SPDX 工件）；1.0 再绑 Release/semver tag |
 | 签名 | **1.0 后按需** cosign keyless（GitHub OIDC）；1.0 前不阻塞交付 |
 | 稳定 semver tag | 发 `v1.0.0` 时再加 `1.0.0` / `1` 标签；当前以 `latest`+sha 为准 |
 
