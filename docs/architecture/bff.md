@@ -53,7 +53,7 @@
 1. 上游契约就绪（spec + sandbox）。  
 2. `apps/web/src/app/api/.../route.ts` 用 `proxyToSandbox` / SSE / tunnel。  
 3. `plugins/sandbox/src/bff-map.ts` 追加一行。  
-4. `pnpm check:bff-map` + `ci-guards` + 可选 `e2e:bff`。  
+4. `pnpm check:bff-map` + `ci-guards` + `e2e:bff`（GHA job `e2e-bff` 起 fake sandbox/tunnel/web）。  
 5. 更新本页表格。
 
 新产品侧栏走 [插件模型](./plugins)。
