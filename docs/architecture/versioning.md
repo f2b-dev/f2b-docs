@@ -35,8 +35,21 @@ OpenAPI 文件名可带 major 暗示（如 `sandbox-v1.yaml`）；与 npm 包 se
 | 产物 | 策略 |
 |------|------|
 | HTTP API | `/v1`；新 major 路径或并行资源 |
-| `ghcr.io/f2b-dev/sandbox` | `:<git-sha>` + main 的 `latest` |
+| `ghcr.io/f2b-dev/sandbox` | 见下节 |
 | 控制台 / BFF | 随 git；无独立 semver 强制 |
+
+### `ghcr.io/f2b-dev/sandbox` 标签与供应链
+
+| 项 | 约定 |
+|----|------|
+| 构建 | `f2b-sandbox` GHA `image` job；上下文为 **父目录**（含 `f2b-spec`），`Dockerfile` 见仓内 |
+| 标签 | `latest`（仅 `main`）+ `type=sha`（短 git SHA，无前缀） |
+| 推送 | **仅** `push` 到 `main`；PR 只 build 不 push |
+| 默认镜像 env | `F2B_SANDBOX_BACKEND=fake`、`PORT=13287`、`DATABASE_URL=file:/data/…` |
+| 拉取示例 | `docker pull ghcr.io/f2b-dev/sandbox:latest` 或 `…/sandbox:<sha>` |
+| SBOM | **1.0 前可选**；1.0 闸门打开后建议 GHA 附加 `anchore/sbom-action` 或 buildx attestations，产物附 Release / GHCR |
+| 签名 | **1.0 后按需** cosign keyless（GitHub OIDC）；1.0 前不阻塞交付 |
+| 稳定 semver tag | 发 `v1.0.0` 时再加 `1.0.0` / `1` 标签；当前以 `latest`+sha 为准 |
 
 ## SDK
 
