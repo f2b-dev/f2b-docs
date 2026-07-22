@@ -19,10 +19,13 @@ MCP Client (stdio)
 
 | Tool | 说明 |
 |------|------|
-| `sandbox_create` | 创建沙箱 |
-| `sandbox_list` / `sandbox_get` | 列表 / 详情 |
+| `sandbox_create` | 创建沙箱（可选 `metadata` / `timeoutMs`） |
+| `sandbox_list` / `sandbox_get` | 列表（`status` 过滤）/ 详情 |
+| `sandbox_update` | 延期 `timeoutMs` / 浅合并 `metadata` |
 | `sandbox_run` | 执行命令 |
-| `sandbox_write_file` / `sandbox_read_file` / `sandbox_list_files` | 文件 |
+| `sandbox_write_file` / `sandbox_read_file` / `sandbox_list_files` / `sandbox_delete_file` | 文件 |
+| `sandbox_pause` / `sandbox_resume` | 暂停 / 恢复 |
+| `sandbox_templates` / `sandbox_usage` | 模板 / 用量 |
 | `sandbox_kill` | 销毁 |
 
 ## 本地
