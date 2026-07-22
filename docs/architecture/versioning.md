@@ -90,3 +90,4 @@ f2b-spec
 - 各产品仓根目录 `CHANGELOG.md`（Keep a Changelog；预 1.0 用 `## [Unreleased]`）。
 - 组织级 **1.0 门槛、发布顺序、安全演练**：[f2b-meta RELEASE.md](https://github.com/f2b-dev/f2b-meta/blob/main/RELEASE.md)。
 - **勾选完 RELEASE 清单前**不得 npm / PyPI 正式发布。
+- 预写步骤与包名约定见 [f2b-meta RELEASE.md §7](https://github.com/f2b-dev/f2b-meta/blob/main/RELEASE.md#7-registry-发布策略预写10-后执行)。
