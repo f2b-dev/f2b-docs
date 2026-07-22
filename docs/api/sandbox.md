@@ -10,6 +10,21 @@
 GET /healthz
 ```
 
+无鉴权。响应示例字段（**不含密钥**）：
+
+| 字段 | 说明 |
+|------|------|
+| `ok` / `service` | 存活标记与服务名 |
+| `backend` | 数据面 kind（`fake` / `cube` 等）；控制台可诚实展示 |
+| `auth` | 鉴权模式（`off` / `api_key`…），不回显密钥 |
+| `db` | 控制面库路径（运维） |
+| `activeSandboxes` | 占用并发槽数（`provisioning` / `running` / `paused`） |
+| `maxConcurrentSandboxes` | 兼容字段；等于 `capacity.max`（未配置硬顶时省略） |
+| `capacity.active` / `max` / `available` | 占用 / 硬顶（`F2B_MAX_CONCURRENT_SANDBOXES`，null=不限制）/ 剩余 |
+| `reaper.enabled` / `intervalMs` | 超时回收器（`F2B_TIMEOUT_REAPER_MS`，默认 2000；≤0 关闭） |
+
+控制台概览经 BFF `GET /api/health` 同源代理展示容量提示。
+
 ## 沙箱
 
 | 方法 | 路径 | 说明 |
