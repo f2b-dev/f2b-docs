@@ -14,6 +14,13 @@
 | 新增可选字段、新错误码、新资源（兼容） | minor | `TunnelRecord`、SSE 事件可选字段 |
 | 删除/改名必填字段、改错误语义 | major | 去掉必填 `id` 形态 |
 
+### OpenAPI 与 Zod（双源）
+
+- **OpenAPI YAML**：跨语言 / 文档 / 外部生成器的 HTTP 真相面。  
+- **Zod（`src/`）**：`f2b-sandbox` 运行时校验与 TS 类型。  
+- **1.0 前**：不强制从 OpenAPI 生成 Zod；改契约时 **YAML + Zod + codes.json** 同 PR。  
+- CI：`pnpm lint:openapi`（Spectral）+ `pnpm check:errors` + sandbox `ci:contract`。
+
 ### 破坏性变更流程
 
 1. PR 标记 `breaking`，列出影响仓（sandbox / sdk / web / mcp / tunnel）。
