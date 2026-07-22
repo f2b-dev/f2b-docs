@@ -15,21 +15,27 @@ GET /healthz
 | 方法 | 路径 | 说明 |
 |------|------|------|
 | GET | `/v1/sandboxes` | 列表（可选 `?projectId=`） |
-| POST | `/v1/sandboxes` | 创建 body：`name` / `template` / `timeoutMs` / `allowInternetAccess` / `projectId` |
-| GET | `/v1/sandboxes/{id}` | 详情 |
+| POST | `/v1/sandboxes` | 创建 body：`name` / `template` / `timeoutMs` / `allowInternetAccess` / `metadata` / `projectId` |
+| GET | `/v1/sandboxes/{id}` | 详情（含 `metadata`） |
+| PATCH | `/v1/sandboxes/{id}` | 延期 `timeoutMs`（`null` 取消）与/或浅合并 `metadata`；仅活动沙箱 |
 | DELETE | `/v1/sandboxes/{id}` | 销毁 |
 | POST | `/v1/sandboxes/{id}/pause` | 暂停（fake 支持；Cube 视集群） |
 | POST | `/v1/sandboxes/{id}/resume` | 恢复 |
-
-### 超时回收
-
-- 创建时若设置 `timeoutMs`（1 ms–24 h），从 `startedAt`（无则 `createdAt`）起算到期。
-- 进程内 reaper 默认每 **2 s** 扫表（`F2B_TIMEOUT_REAPER_MS`，`≤0` 关闭）；到期自动 `kill`，`error` 记为 `timeout exceeded`，并写入 lifetime 用量。
-- 启动时立即扫一次，清理重启前遗留的超时实例。
 | POST | `/v1/sandboxes/{id}/commands` | body：`{ "cmd": "echo hi" }` 整包 JSON |
 | POST | `/v1/sandboxes/{id}/commands/stream` | 同上 body；响应 SSE：`stdout`/`stderr`/`result` |
 | GET | `/v1/sandboxes/{id}/files` | `?path=` 读；`?list=1&path=` 列目录 |
 | POST | `/v1/sandboxes/{id}/files` | body：`path` / `content` / `encoding` |
+
+### metadata
+
+- 创建时可传 `metadata: { "key": "value" }`（string→string），控制面持久化，不进 guest。
+- `PATCH` 对 `metadata` **浅合并**（同 key 覆盖）；终端态返回 `SANDBOX_ALREADY_TERMINAL`。
+
+### 超时回收
+
+- 创建或 `PATCH` 设置 `timeoutMs`（1 ms–24 h；`null` 取消），从 `startedAt`（无则 `createdAt`）起算到期。
+- 进程内 reaper 默认每 **2 s** 扫表（`F2B_TIMEOUT_REAPER_MS`，`≤0` 关闭）；到期自动 `kill`，`error` 记为 `timeout exceeded`，并写入 lifetime 用量。
+- 启动时立即扫一次，清理重启前遗留的超时实例。
 
 ## API Key（管理）
 
@@ -45,6 +51,7 @@ f2b-web 将 `/api/sandboxes*` 代理到 sandbox `/v1/sandboxes*`。
 | 浏览器路径 | 上游 |
 |------------|------|
 | `POST /api/sandboxes` | `POST /v1/sandboxes` |
+| `PATCH /api/sandboxes/{id}` | 延期 timeout / 合并 metadata |
 | `POST /api/sandboxes/{id}/commands` | 整包命令 |
 | `POST /api/sandboxes/{id}/commands/stream` | SSE 透传（`proxySseToSandbox`，不缓冲 body） |
 
