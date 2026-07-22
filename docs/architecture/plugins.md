@@ -9,10 +9,10 @@ f2b-web/
   packages/console-shell/   # ConsolePlugin 类型、mergePluginNav、壳布局
   packages/ui/              # 设计系统
   packages/bff-core/        # 上游代理
-  plugins/sandbox/          # @f2b/plugin-sandbox
+  plugins/sandbox/          # @f2b/plugin-sandbox（nav + bff-map）
   apps/web/src/plugins/registry.ts   # 启用列表
   apps/web/src/app/console/**        # 页面（V1 仍可放 app）
-  apps/web/src/app/api/**            # BFF
+  apps/web/src/app/api/**            # BFF 实现
 ```
 
 ## `ConsolePlugin`（V1）
@@ -24,7 +24,8 @@ f2b-web/
 | `titleFor?` | 根据 pathname 返回页眉标题 |
 | `productLabel?` | 顶栏产品名 |
 
-V1 **不**在插件包内挂 Next 页面或 BFF（仍在 `apps/web`）；**不**做远程动态加载。
+V1 **不**在插件包内挂 Next 页面或 BFF route 文件（仍在 `apps/web`）；**不**做远程动态加载。  
+沙箱插件额外导出 **`sandboxBffRoutes`**：文档与 `pnpm check:bff-map` 的契约表，实现仍在 `app/api`。
 
 ## 新增插件
 
@@ -33,7 +34,9 @@ V1 **不**在插件包内挂 Next 页面或 BFF（仍在 `apps/web`）；**不**
 3. 补页面与 `/api/*` BFF。
 4. 浏览器 client 只请求同源 `/api`。
 
-示例见 `f2b-web/plugins/sandbox/README.md`。
+## 新增 BFF 路由
+
+见 [BFF 路由表](./bff) 与仓库内 [`plugins/sandbox/README.md`](https://github.com/f2b-dev/f2b-web/blob/main/plugins/sandbox/README.md) 的逐步示例（`proxyToSandbox` / SSE / admin / tunnel）。
 
 ## UI 硬约束
 
