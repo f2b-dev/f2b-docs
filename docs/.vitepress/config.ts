@@ -42,6 +42,7 @@ export default defineConfig({
             { text: "控制台插件", link: "/architecture/plugins" },
             { text: "本地 Compose", link: "/architecture/compose" },
             { text: "单机容量与模板", link: "/architecture/capacity" },
+            { text: "能力矩阵 Fake/真数据面", link: "/architecture/capability-matrix" },
             { text: "版本与发版", link: "/architecture/versioning" },
           ],
         },
